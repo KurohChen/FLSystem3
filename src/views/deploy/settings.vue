@@ -4,13 +4,29 @@
       <div class="page">
         <el-row :gutter="24">
           <el-col :span="12">
-            <el-form ref="form" :model="form" size="mini" label-width="150px">
+            <el-form ref="form" :model="form" size="mini" label-width="100px" label-position='left'>
+              <el-form-item label="仿真时间" style="font-weight: bold">
+                <el-input @change="formComplete=false" v-model="form.simulate_time"><i slot="suffix">帧（每帧10ms）</i></el-input>
+              </el-form-item>
+            </el-form>
+          </el-col>
+          <el-col :span="12">
+            <el-form ref="form" :model="form" size="mini" label-width="100px" label-position='left'>
+              <el-form-item label="小区个数" style="font-weight: bold">
+                <el-input @change="formComplete=false" v-model="form.cell_num"></el-input>
+              </el-form-item>
+            </el-form>
+          </el-col>
+        </el-row>
+        <el-row :gutter="24">
+          <el-col :span="12">
+            <el-form ref="form" :model="form" size="mini" label-width="100px" label-position='left'>
               <el-form-item label="用户位置坐标" style="font-weight: bold">
                 <el-table
                   :data="form.userPos"
                   border
                   style="width:100%;"
-                  max-height="20vh">
+                  max-height="200px">
                   <el-table-column align="center" type="index" label="序号"></el-table-column>
                   <el-table-column align="center" label="位置坐标">
                     <template slot-scope="scope">
@@ -30,13 +46,13 @@
             </el-form>
           </el-col>
           <el-col :span="12">
-            <el-form ref="form" :model="form" size="mini" label-width="150px">
+            <el-form ref="form" :model="form" size="mini" label-width="100px" label-position='left'>
               <el-form-item label="基站位置坐标" style="font-weight: bold">
                 <el-table
                   :data="form.BSPos"
                   border
                   style="width:100%;"
-                  max-height="20vh">
+                  max-height="200px">
                   <el-table-column align="center" type="index" label="序号"></el-table-column>
                   <el-table-column align="center" label="位置坐标">
                     <template slot-scope="scope">
@@ -58,7 +74,7 @@
         </el-row>
         <el-row :gutter="24">
           <el-col :span="24">
-            <el-form ref="form" :model="form" size="mini" label-width="150px">
+            <el-form ref="form" :model="form" size="mini" label-width="150px" label-position='left'>
               <el-form-item label="信道模型相关参数" style="font-weight: bold"></el-form-item>
             </el-form>
           </el-col>
@@ -67,76 +83,55 @@
           <el-col :span="6">
             <el-form ref="form" :model="form" size="mini" label-width="150px">
               <el-form-item label="nb_tx">
-                <el-input v-model="form.input.nb_tx"></el-input>
+                <el-input @change="formComplete=false" v-model="form.params.nb_tx"></el-input>
               </el-form-item>
               <el-form-item label="nb_rx">
-                <el-input v-model="form.input.nb_rx"></el-input>
+                <el-input @change="formComplete=false" v-model="form.params.nb_rx"></el-input>
               </el-form-item>
               <el-form-item label="nb_taps">
-                <el-input v-model="form.input.nb_taps"></el-input>
+                <el-input @change="formComplete=false" v-model="form.params.nb_taps"></el-input>
               </el-form-item>
               <el-form-item label="channel_bandwidth">
-                <el-input v-model="form.input.channel_bandwidth"></el-input>
+                <el-input @change="formComplete=false" v-model="form.params.channel_bandwidth"></el-input>
               </el-form-item>
             </el-form>
           </el-col>
           <el-col :span="6">
             <el-form ref="form" :model="form" size="mini" label-width="150px">
-              <el-form-item label="nb_tx">
-                <el-input v-model="form.input.nb_tx"></el-input>
+              <el-form-item label="sampling_rate">
+                <el-input @change="formComplete=false" v-model="form.params.sampling_rate"></el-input>
               </el-form-item>
-              <el-form-item label="nb_rx">
-                <el-input v-model="form.input.nb_rx"></el-input>
+              <el-form-item label="max_Doppler">
+                <el-input @change="formComplete=false" v-model="form.params.max_Doppler"></el-input>
               </el-form-item>
-              <el-form-item label="nb_taps">
-                <el-input v-model="form.input.nb_taps"></el-input>
+              <el-form-item label="amps">
+                <el-input @change="formComplete=false" v-model="form.params.amps"></el-input>
               </el-form-item>
-              <el-form-item label="channel_bandwidth">
-                <el-input v-model="form.input.channel_bandwidth"></el-input>
-              </el-form-item>
-            </el-form>
-          </el-col>
-          <el-col :span="6">
-            <el-form ref="form" :model="form" size="mini" label-width="150px">
-              <el-form-item label="nb_tx">
-                <el-input v-model="form.input.nb_tx"></el-input>
-              </el-form-item>
-              <el-form-item label="nb_rx">
-                <el-input v-model="form.input.nb_rx"></el-input>
-              </el-form-item>
-              <el-form-item label="nb_taps">
-                <el-input v-model="form.input.nb_taps"></el-input>
-              </el-form-item>
-              <el-form-item label="channel_bandwidth">
-                <el-input v-model="form.input.channel_bandwidth"></el-input>
+              <el-form-item label="delays">
+                <el-input @change="formComplete=false" v-model="form.params.delays"></el-input>
               </el-form-item>
             </el-form>
           </el-col>
           <el-col :span="6">
             <el-form ref="form" :model="form" size="mini" label-width="150px">
-              <el-form-item label="nb_tx">
-                <el-input v-model="form.input.nb_tx"></el-input>
+              <el-form-item label="channel_length">
+                <el-input @change="formComplete=false" v-model="form.params.channel_length"></el-input>
               </el-form-item>
-              <el-form-item label="nb_rx">
-                <el-input v-model="form.input.nb_rx"></el-input>
+              <el-form-item label="Td">
+                <el-input @change="formComplete=false" v-model="form.params.Td"></el-input>
               </el-form-item>
-              <el-form-item label="nb_taps">
-                <el-input v-model="form.input.nb_taps"></el-input>
+              <el-form-item label="aoa">
+                <el-input @change="formComplete=false" v-model="form.params.aoa"></el-input>
               </el-form-item>
-              <el-form-item label="channel_bandwidth">
-                <el-input v-model="form.input.channel_bandwidth"></el-input>
+              <el-form-item label="ricean_factor">
+                <el-input @change="formComplete=false" v-model="form.params.ricean_factor"></el-input>
               </el-form-item>
             </el-form>
           </el-col>
-        </el-row>
-        <el-row :gutter="24">
-          <el-col :span="24">
+          <el-col :span="6">
             <el-form ref="form" :model="form" size="mini" label-width="150px">
-              <el-form-item label="仿真时间" style="font-weight: bold">
-                <el-input v-model="form.input.nb_tx" style="width: 300px"><i slot="suffix">帧（每帧10ms）</i></el-input>
-              </el-form-item>
-              <el-form-item label="小区个数" style="font-weight: bold">
-                <el-input v-model="form.input.nb_tx" style="width: 300px"></el-input>
+              <el-form-item label="path_loss_dB">
+                <el-input @change="formComplete=false" v-model="form.params.path_loss_dB"></el-input>
               </el-form-item>
             </el-form>
           </el-col>
@@ -145,7 +140,8 @@
     </div>
     <div class="footer">
       <el-button style="margin-top: 5px;" type="primary" @click="reset">重置</el-button>
-      <el-button style="margin-top: 5px;" type="success" @click="reset">保存</el-button>
+      <el-button style="margin-top: 5px;" type="success" @click="save" v-if="!formComplete">保存</el-button>
+      <el-button style="margin-top: 5px;" type="info" disabled v-else>已保存</el-button>
     </div>
     <el-dialog
       :title="'新增'+dialogTitle+'位置坐标'"
@@ -153,9 +149,9 @@
       :modal-append-to-body='false'
       width="30%">
       <el-form :model="newRow" size="mini" label-width="100px">
-        <el-form-item label="x坐标"><el-input v-model="newRow.x" type="number" style="width: 100px"></el-input></el-form-item>
-        <el-form-item label="y坐标"><el-input v-model="newRow.y" type="number" style="width: 100px"></el-input></el-form-item>
-        <el-form-item label="z坐标"><el-input v-model="newRow.z" type="number" style="width: 100px"></el-input></el-form-item>
+        <el-form-item label="x坐标"><el-input @change="formComplete=false" v-model="newRow.x" type="number" style="width: 100px"></el-input></el-form-item>
+        <el-form-item label="y坐标"><el-input @change="formComplete=false" v-model="newRow.y" type="number" style="width: 100px"></el-input></el-form-item>
+        <el-form-item label="z坐标"><el-input @change="formComplete=false" v-model="newRow.z" type="number" style="width: 100px"></el-input></el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogVisible = false">取 消</el-button>
@@ -175,13 +171,10 @@
         dialogTitle: '',
         dialogVisible: false,
         newRow: {x:'',y:'',z:''},
+        formComplete: true,
         form: {
-          method: '',
           userPos: [
             { pos: [15,0,0] },
-            { pos: [15,10,0] },
-            { pos: [15,0,10] },
-            { pos: [15,0,20] },
           ],
           BSPos: [
             { pos: [20,0,0] },
@@ -189,19 +182,9 @@
             { pos: [20,0,10] },
             { pos: [20,0,20] },
           ],
-          files: [
-            'AWGN',
-            'Rice1',
-            'Rayleigh1',
-            'SCM_A',
-            'EPA',
-            'EVA',
-            'ETU',
-            'TDL_A',
-            'MBSFN',
-          ],
-          selectFile: '',
-          input: {
+          simulate_time: '',
+          cell_num: '',
+          params: {
             nb_tx: '',
             nb_rx: '',
             nb_taps: '',
@@ -210,51 +193,33 @@
             max_Doppler: '',
             amps: '',
             delays: '',
+            channel_length: '',
             Td: '',
             aoa: '',
             ricean_factor: '',
             path_loss_dB: '',
           },
-          fileName: '',
-          fileList: []
         },
       }
+    },
+    created() {
+      this.form = JSON.parse(JSON.stringify(this.$store.state.form_deploy));
+      this.loading = false;
     },
     mounted() {
       this.loading = false;
     },
     methods:{
       reset() {
-        this.form = {
-          files: [
-            'AWGN',
-            'Rice1',
-            'Rayleigh1',
-            'SCM_A',
-            'EPA',
-            'EVA',
-            'ETU',
-            'TDL_A',
-            'MBSFN',
-          ],
-          selectFile: '',
-          input: {
-            nb_tx: '',
-            nb_rx: '',
-            nb_taps: '',
-            channel_bandwidth: '',
-            sampling_rate: '',
-            max_Doppler: '',
-            amps: '',
-            delays: '',
-            Td: '',
-            aoa: '',
-            ricean_factor: '',
-            path_loss_dB: '',
-          },
-          fileName: '',
-          fileList: []
-        } 
+        this.form = JSON.parse(JSON.stringify(this.$store.state.form_deploy));
+        this.formComplete = true;
+      },
+      save() {
+        this.$store.commit('setForm', {
+          name: 'deploy',
+          form: this.form
+        })
+        this.formComplete = true;
       },
       goAddRow(index) {
         this.newRow = {x:'',y:'',z:''};
@@ -262,16 +227,20 @@
         this.dialogVisible = true;
       },
       addRow() {
-        if(this.dialogTitle=='用户') {
-          this.form.userPos.push({pos: [parseInt(this.newRow.x),parseInt(this.newRow.y),parseInt(this.newRow.z)]})
+        if(this.newRow.x!=''&&this.newRow.y!=''&&this.newRow.z!='') {          
+          if(this.dialogTitle=='用户') {
+            this.form.userPos.push({pos: [parseInt(this.newRow.x),parseInt(this.newRow.y),parseInt(this.newRow.z)]})
+          } else {
+            this.form.BSPos.push({pos: [parseInt(this.newRow.x),parseInt(this.newRow.y),parseInt(this.newRow.z)]})
+          }
+          this.dialogVisible = false;
+          this.$message({
+            message: this.dialogTitle+'位置坐标添加成功',
+            type: 'success'
+          });
         } else {
-          this.form.BSPos.push({pos: [parseInt(this.newRow.x),parseInt(this.newRow.y),parseInt(this.newRow.z)]})
+          this.$message('请确保信息都填写无误');
         }
-        this.dialogVisible = false;
-        this.$message({
-          message: this.dialogTitle+'位置坐标添加成功',
-          type: 'success'
-        });
       },
       handleDelete(index1,index2) {
         if(index2==1) {
@@ -289,22 +258,6 @@
 
 </script>
 
-<style>
-
-  .el-table .el-table__cell {
-    padding: 0;
-  }
-  .el-table__header tr,
-  .el-table__header th {
-    padding: 0;
-    height: 40px;
-  }
-  .el-table__body tr,
-  .el-table__body td {
-    padding: 0;
-    height: 40px;
-  }
-</style>
 <style scoped>
   .container {
     padding: 20px 80px;

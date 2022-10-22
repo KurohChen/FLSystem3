@@ -12,6 +12,22 @@
   }
 </script>
 
+<style>
+  .el-table .el-table__cell {
+    padding: 0;
+  }
+  .el-table__header tr,
+  .el-table__header th {
+    padding: 0;
+    height: 40px;
+  }
+  .el-table__body tr,
+  .el-table__body td {
+    padding: 0;
+    height: 40px;
+  }
+</style>
+
 <style scoped>
   @import "assets/css/base.css";
   #app {

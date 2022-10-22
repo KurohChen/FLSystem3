@@ -9,10 +9,11 @@
           active-text-color="#ffd04b"
           router
         >
-          <el-menu-item index="/home/optimize/settings1"><i class="el-icon-menu"></i>时延优化配置</el-menu-item>
-          <el-menu-item index="/home/optimize/showpage1"><i class="el-icon-menu"></i>时延优化性能展示</el-menu-item>
-          <el-menu-item index="/home/optimize/settings2"><i class="el-icon-menu"></i>可靠性优化配置</el-menu-item>
-          <el-menu-item index="/home/optimize/showpage2"><i class="el-icon-menu"></i>可靠性优化性能展示</el-menu-item>
+          <el-menu-item index="/home/optimize/settings"><i class="el-icon-menu"></i>参数配置</el-menu-item>
+          <el-menu-item index="/home/optimize/select"><i class="el-icon-menu"></i>调度策略选择</el-menu-item>
+          <el-menu-item index="/home/optimize/simulation"><i class="el-icon-menu"></i>信道模拟</el-menu-item>
+          <el-menu-item index="/home/optimize/optimization"><i class="el-icon-menu"></i>性能优化</el-menu-item>
+          <el-menu-item index="/home/optimize/showpage"><i class="el-icon-menu"></i>仿真回放</el-menu-item>
         </el-menu>
       </el-aside>
       <el-main style="background-color: #fff;">

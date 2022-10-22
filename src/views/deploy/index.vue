@@ -9,8 +9,7 @@
           active-text-color="#ffd04b"
           router
         >
-          <el-menu-item index="/home/activate/settings"><i class="el-icon-menu"></i>运行配置</el-menu-item>
-          <el-menu-item index="/home/activate/showpage"><i class="el-icon-menu"></i>运行启动</el-menu-item>
+          <el-menu-item index="/home/deploy/settings"><i class="el-icon-menu"></i>网络部署</el-menu-item>
         </el-menu>
       </el-aside>
       <el-main style="background-color: #fff;">
