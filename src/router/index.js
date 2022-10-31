@@ -64,7 +64,9 @@ const routes = [
           { path: 'select', name: 'Select', component: () => import('../views/optimize/select.vue') },
           { path: 'simulation', name: 'Simulation', component: () => import('../views/optimize/simulation.vue') },
           { path: 'optimization', name: 'Optimization', component: () => import('../views/optimize/optimization.vue') },
-          { path: 'showpage', name: 'Showpage', component: () => import('../views/optimize/showpage.vue') },
+          { path: 'showpage1', name: 'Showpage1', component: () => import('../views/optimize/showpage1.vue') },
+          { path: 'showpage2', name: 'Showpage2', component: () => import('../views/optimize/showpage2.vue') },
+          { path: 'showpage3', name: 'Showpage3', component: () => import('../views/optimize/showpage3.vue') },
         ]
       }
     ]
