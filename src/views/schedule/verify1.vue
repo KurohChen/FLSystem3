@@ -9,14 +9,14 @@
       <div class="page" id="page2" v-show="state==3">
         <el-row :gutter="24">
           <el-col :span="24">
-            <el-form ref="form" :model="form1.input1" size="mini" label-width="200px" label-position="left">
+            <el-form ref="form" :model="form" size="mini" label-width="200px" label-position="left">
               <el-form-item label="各用户上行传输功率值 " style="font-weight: bold"></el-form-item>
               <el-form-item>
                 <el-table
-                  :data="powerList"
+                  :data="form.powerList"
                   border
                   style="width:100%;"
-                  height="200">
+                  height="400">
                   <el-table-column align="center" label="用户名称" prop="username"></el-table-column>
                   <el-table-column align="center" label="功率值" prop="value"></el-table-column>
                 </el-table>
@@ -26,12 +26,12 @@
         </el-row>
         <el-row :gutter="24">
           <el-col :span="24">
-            <el-form ref="form" :model="form1.input1" size="mini" label-width="200px" label-position="left">
+            <el-form ref="form" :model="form" size="mini" label-width="200px" label-position="left">
               <el-form-item label="上行平均功率值" style="font-weight: bold"></el-form-item>
               <el-row :gutter="24">
                 <el-col :span="12">
                   <el-form-item>
-                    <el-input v-model="form1.input1.username" disabled></el-input>
+                    <el-input v-model="form.avgPower" readonly></el-input>
                   </el-form-item>
                 </el-col>
               </el-row>
@@ -53,17 +53,29 @@
       return {
         loading: false,
         state: 0,
-        powerList: [
-          { username: '用户一', value: 123},
-          { username: '用户二', value: 22},
-          { username: '用户三', value: 11123},
-          { username: '用户四', value: 12322},
-          { username: '用户五', value: 12123},
-        ],
-        form1: {
-          input1: {
-            username: '', password: ''
-          }
+        form: {
+          avgPower:'21',
+          powerList: [
+            { username: '用户1', value: 21.4},
+            { username: '用户2', value: 21.5},
+            { username: '用户3', value: 22.6},
+            { username: '用户4', value: 20.9},
+            { username: '用户5', value: 21.5},
+            { username: '用户6', value: 20.5},
+            { username: '用户7', value: 22.8},
+            { username: '用户8', value: 22.1},
+            { username: '用户9', value: 22.3},
+            { username: '用户10', value: 21.4},
+            { username: '用户11', value: 22.0},
+            { username: '用户12', value: 21.7},
+            { username: '用户13', value: 23.4},
+            { username: '用户14', value: 21.4},
+            { username: '用户15', value: 21.8},
+            { username: '用户16', value: 22.2},
+            { username: '用户17', value: 22.4},
+            { username: '用户18', value: 21.7},
+            { username: '用户19', value: 21.8},
+          ],
         }
       }
     },
@@ -71,19 +83,6 @@
       this.loading = false;
     },
     methods:{
-      reset() {},
-      // submitUpload() {
-      //   this.$refs.upload.submit();
-      // },
-      handleRemove(file, fileList) {
-        console.log(file, fileList);
-      },
-      handlePreview(file) {
-        console.log(file);
-      },
-      submit() {
-
-      },
       start() {
         this.state = 1;
         setTimeout(() => {

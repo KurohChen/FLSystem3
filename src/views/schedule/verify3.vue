@@ -9,17 +9,12 @@
       <div class="page" id="page2" v-show="state==3">
         <el-row :gutter="24">
           <el-col :span="24">
-            <el-form ref="form" :model="form1.input1" size="mini" label-width="200px" label-position="left">
+            <el-form ref="form" :model="output" size="mini" label-width="200px" label-position="left">
               <el-form-item label="采用IRS辅助信道 " style="font-weight: bold"></el-form-item>
               <el-row :gutter="24">
                 <el-col :span="12">
-                  <el-form-item label="IRS反射单元相位值">
-                    <el-input v-model="form1.input1.username"></el-input>
-                  </el-form-item>
-                </el-col>
-                <el-col :span="12">
                   <el-form-item label="采用IRS信号残差功率比">
-                    <el-input v-model="form1.input1.password"></el-input>
+                    <el-input v-model="output.IRS"></el-input>
                   </el-form-item>
                 </el-col>
               </el-row>
@@ -28,12 +23,12 @@
         </el-row>
         <el-row :gutter="24">
           <el-col :span="24">
-            <el-form ref="form" :model="form1.input1" size="mini" label-width="200px" label-position="left">
+            <el-form ref="form" :model="output" size="mini" label-width="200px" label-position="left">
               <el-form-item label="未采用IRS辅助信道" style="font-weight: bold"></el-form-item>
               <el-row :gutter="24">
                 <el-col :span="12">
                   <el-form-item label="未采用IRS信号残差功率比">
-                    <el-input v-model="form1.input1.username"></el-input>
+                    <el-input v-model="output.noIRS"></el-input>
                   </el-form-item>
                 </el-col>
               </el-row>
@@ -55,11 +50,10 @@
       return {
         loading: false,
         state: 0,
-        form1: {
-          input1: {
-            username: '', password: ''
-          }
-        }
+        output:{
+          IRS: '5.86e-4',
+          noIRS:'1.986e-3',
+        },
       }
     },
     mounted() {

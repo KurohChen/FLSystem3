@@ -8,13 +8,16 @@ export default new Vuex.Store({
     form_deploy: {
       userPos: [
         { pos: [15,0,0] },
+        { pos: [35,0,0] },
+        { pos: [65,0,0] },
+        { pos: [90,0,0] },
       ],
       BSPos: [
-        { pos: [20,0,0] },
-        { pos: [20,10,0] },
+        { pos: [0,0,0] },
+        { pos: [50,50,0] },
       ],
       simulate_time: '2',
-      cell_num: '10',
+      cell_num: '1',
       params: {
         nb_tx: '1',
         nb_rx: '1',
@@ -32,8 +35,28 @@ export default new Vuex.Store({
       },
     },
     form_schedule: {
+      input1: {
+        sampleRate: '2M',
+        CenterFreq: '38.4MHz',
+        IRS: '20,180',
+        fileList: [],
+      },
+      input2: {
+        length:'320',
+        structure:'4:4:8:16:13:3:16:8:8:16:32:32',
+        structureParam:'1',
+        structureFileList: [],
+        FFTLength:'256',
+        signalSelectFile:'ofdm.grc',
+        signalFiles:['ofdm.grc','ofdm-rx-usrp.grc','ofdm-rx-cp-corr.grc','ofdm-rx-sync.grc'],
+        centerFrequency:'3.5GHz',
+        subFrequency:'15kHz',
+        punishCoefficient:'1e-10',
+        lagrangeCoefficient:'8.5e-10',
+        userPower:'10w',
+      },
+    },
 
-    }
   },
   getters: {
   },
@@ -43,6 +66,8 @@ export default new Vuex.Store({
         state.form_deploy = JSON.parse(JSON.stringify(content.form))
       } else if(content.name=='schedule') {
         state.form_schedule = JSON.parse(JSON.stringify(content.form))
+
+
       // } else if(content.name==3) {
       //   state.form3 = JSON.parse(JSON.stringify(content.forms[0]))
       // } else if(content.name==4.1) {

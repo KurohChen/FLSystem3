@@ -3,28 +3,26 @@
     <div class="content">
       <div class="page" id="page2">
         <el-row :gutter="24">
-          <el-col :span="8">
-            <el-form ref="form" :model="form1.input1" size="mini" label-width="150px" label-position="left" :disabled='state!=0'>
-              <el-form-item label="参数配置" style="font-weight: bold"></el-form-item>
-              <el-form-item label="IRS反射单元数">
-                <el-input @change="formComplete=false" v-model="params.unit_num"></el-input>
-              </el-form-item>
-              <el-form-item label="多用户个数">
-                <el-input @change="formComplete=false" v-model="params.user_num"></el-input>
-              </el-form-item>
-            </el-form>
-          </el-col>
-          <el-col :span="14" :offset="2">
-            <el-form ref="form" :model="form1.input1" size="mini" label-width="200px" label-position="left" disabled>
-              <el-form-item label="各算法用户上行传输功率值对比" style="font-weight: bold" label-width="500px"></el-form-item>
-              <el-form-item :label="'基于IRS辅助的\n分布式能效资源分配算法'">
-                <el-input v-model="form1.input1.username"></el-input>
-              </el-form-item>
-              <el-form-item label="功率集中算法">
-                <el-input v-model="form1.input1.password"></el-input>
-              </el-form-item>
-            </el-form>
-          </el-col>
+          <el-form ref="form" :model="params" size="mini" label-width="300px" label-position="left" :disabled='state!=0'>
+            <el-form-item label="参数配置" style="font-weight: bold"></el-form-item>
+            <el-form-item label="IRS反射单元数">
+              <el-input @change="formComplete=false" v-model="params.unit_num" style="width: 300px"></el-input>
+            </el-form-item>
+            <el-form-item label="多用户个数">
+              <el-input @change="formComplete=false" v-model="params.user_num" style="width: 300px"></el-input>
+            </el-form-item>
+          </el-form>
+          <el-form ref="form" :model="output" size="mini" label-width="300px" label-position="left" >
+            <el-form-item label="各算法用户上行传输功率值对比" style="font-weight: bold" label-width="500px"></el-form-item>
+            <el-form-item :label="'基于IRS辅助的分布式能效资源分配算法'">
+              <el-input v-model="output.IRS" readonly style="width: 300px"></el-input>
+            </el-form-item>
+            <el-form-item label="功率集中算法">
+              <el-input v-model="output.power" readonly style="width: 300px"></el-input>
+            </el-form-item>
+          </el-form>
+
+
         </el-row>
       </div>
     </div>
@@ -46,14 +44,13 @@
         loading: false,
         state: 0,
         formComplete: true,
-        form1: {
-          input1: {
-            username: '', password: ''
-          }
+        output:{
+          IRS:'26.9',
+          power:'26.4',
         },
         params: {
-          unit_num: 2,
-          user_num: 3,
+          unit_num: 100,
+          user_num: 100,
         }
       }
     },

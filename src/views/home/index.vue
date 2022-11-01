@@ -13,8 +13,8 @@
           <el-menu-item index="/home/index"><img src="../../assets/school_logo_white.png" alt="" style="height: 50px;margin: 0 40px"></el-menu-item>
           <el-menu-item index="/home/index">首页</el-menu-item>
           <el-menu-item index="/home/deploy">网络部署</el-menu-item>
-          <el-menu-item index="/home/schedule">IRS辅助的5G URLLC无线网络资源调度仿真模块</el-menu-item>
-          <el-menu-item index="/home/wireless">面向5G无缝衔接的无线网络接入与切换仿真子系统</el-menu-item>
+          <el-menu-item index="/home/schedule">系统级信号收发和资源分配仿真模块</el-menu-item>
+          <el-menu-item index="/home/wireless">系统级移动性增强仿真模块</el-menu-item>
           <el-menu-item index="/home/optimize">系统级性能优化仿真模块</el-menu-item>
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item>查看</el-dropdown-item>
