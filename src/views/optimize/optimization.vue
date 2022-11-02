@@ -15,11 +15,11 @@
               </el-form-item>
               <el-form-item  label-width="0px" v-show="form1.userNum!=''&&form1.userNum!=0">
                 <el-table
-                  :data="form3.tableData"
+                  :data="form1.tableData"
                   border
                   style="width:100%;"
-                  height="160px"
-                  max-height="300px">
+                  height="300px"
+                  max-height="600px">
                   <el-table-column align="center" type="index" label="序号"></el-table-column>
                   <el-table-column align="center" label="DataRate" prop="DataRate"></el-table-column>
                   <el-table-column align="center" label="PacketSize" prop="PacketSize"></el-table-column>
@@ -45,12 +45,12 @@
               <el-form-item label="3. 物理层调制" style="font-weight: bold" label-width="150px">
               </el-form-item>
               <el-form-item label-width="0px">
-                <el-select v-model="form1.select" placeholder="请选择">
+                <el-select v-model="form1.phyModule" placeholder="请选择">
                   <el-option
-                    v-for="item in selectList"
-                    :key="item.index"
-                    :label="item.name"
-                    :value="item.index">
+                    v-for="item in form1.phyModuleList"
+                    :key="item"
+                    :label="item"
+                    :value="item">
                   </el-option>
                 </el-select>
               </el-form-item>
@@ -108,70 +108,26 @@
           method: '0',
           userNum: '',
           tableData: [
-            {'RNTI':1,'LogicalChannelID':4,'LCGID':1,'SeqNumFieldLength':6,'MaxTxBufferSDUs':2,'ReassemblyTimer':5,'EntityType':2,'Priority':1,'PBR':8,'BSD':10},
-            {'RNTI':1,'LogicalChannelID':4,'LCGID':1,'SeqNumFieldLength':6,'MaxTxBufferSDUs':2,'ReassemblyTimer':5,'EntityType':2,'Priority':1,'PBR':8,'BSD':10},
-            {'RNTI':1,'LogicalChannelID':4,'LCGID':1,'SeqNumFieldLength':6,'MaxTxBufferSDUs':2,'ReassemblyTimer':5,'EntityType':2,'Priority':1,'PBR':8,'BSD':10},
-            {'RNTI':1,'LogicalChannelID':4,'LCGID':1,'SeqNumFieldLength':6,'MaxTxBufferSDUs':2,'ReassemblyTimer':5,'EntityType':2,'Priority':1,'PBR':8,'BSD':10},
-            {'RNTI':1,'LogicalChannelID':4,'LCGID':1,'SeqNumFieldLength':6,'MaxTxBufferSDUs':2,'ReassemblyTimer':5,'EntityType':2,'Priority':1,'PBR':8,'BSD':10},
-            {'RNTI':1,'LogicalChannelID':4,'LCGID':1,'SeqNumFieldLength':6,'MaxTxBufferSDUs':2,'ReassemblyTimer':5,'EntityType':2,'Priority':1,'PBR':8,'BSD':10},
-            {'RNTI':1,'LogicalChannelID':4,'LCGID':1,'SeqNumFieldLength':6,'MaxTxBufferSDUs':2,'ReassemblyTimer':5,'EntityType':2,'Priority':1,'PBR':8,'BSD':10},
-          ],
-          fileList: [],
-          select: '',
-          input1: {
-            username: '',
-            password: '',
-            ipaddress: '',
-            port: ''
-          },
-          input2: {
-            username: '',
-            password: '',
-            ipaddress: '',
-            port: ''
-          },
+            {'DataRate':8000,'PacketSize':6400,'HostDevice':0,'RNTI':1,'LCID':4},
+            {'DataRate':3000,'PacketSize':32,'HostDevice':0,'RNTI':1,'LCID':6},
+            {'DataRate':1500,'PacketSize':480,'HostDevice':0,'RNTI':1,'LCID':7},
+            {'DataRate':2000,'PacketSize':1300,'HostDevice':1,'RNTI':1,'LCID':15},
+            ],
+          GNBNoiseFigure:'25',
+          UENoiseFigure:'25',
+          phyModule:'',
+          phyModuleList:['256QAM MCS表','64 QAM MCS表','高可靠性 64 QAM MCS表'],
+
+
         },
-        form2: {
-          method: '0',
-          tableData: [
-            {'DataRate':8000,'PacketSize':6400,'HostDevice':0,'RNTI':1,'LCID':4},
-            {'DataRate':8000,'PacketSize':6400,'HostDevice':0,'RNTI':1,'LCID':4},
-            {'DataRate':8000,'PacketSize':6400,'HostDevice':0,'RNTI':1,'LCID':4},
-            {'DataRate':8000,'PacketSize':6400,'HostDevice':0,'RNTI':1,'LCID':4},
-            {'DataRate':8000,'PacketSize':6400,'HostDevice':0,'RNTI':1,'LCID':4},
-            {'DataRate':8000,'PacketSize':6400,'HostDevice':0,'RNTI':1,'LCID':4},
-          ],
-          fileList: [],
-        },
-        form3: {
-          type1: '0',
-          type2: '0',
-          interval: '15',
-          carrier: [2.515,2.635],
-          bandwidth: [30,30],
-          power: [24,23],
-          gain: 5,
-          fileList: [],
-          maxRB: 160,
-          CSISize: 16,
-          speed: 5,
-          selected: true,
-          selectName: 'FDD',
-          tableData: [
-            {'name':'FDD','DLULPeriodicity':'-','NumDLSlots':'-','NumDLSyms':'-','NumULSyms':'-','NumULSlots':'-','TTIGranularity':'4'},
-            {'name':'TDD','DLULPeriodicity':'5','NumDLSlots':'2','NumDLSyms':'8','NumULSyms':'4','NumULSlots':'2','TTIGranularity':'4'},
-          ],
-        },
+
+
         dialogForm: {
           'name':'FDD','DLULPeriodicity':'-','NumDLSlots':'-',
           'NumDLSyms':'-','NumULSyms':'-','NumULSlots':'-',
           'TTIGranularity':'4'
         },
-        selectList: [
-          {index:0,name:'256QAM MCS表'},
-          {index:1,name:'64QAM MCS表'},
-          {index:2,name:'高可靠性64QAM MCS表'}
-        ],
+
       }
     },
     mounted() {

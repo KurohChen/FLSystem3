@@ -43,11 +43,11 @@
         <el-collapse-item title="算法对比" name="3">
           <div class="imgBox" id="box3">
             <div class="item">
-              <img src="../../assets/imgs/3_1.png" alt="">
+              <div id="echarts_line3_1" style="width: 100%; height: 100%"></div>
               <div class="imgName">不同活跃用户下各算法用户上行平均功率值</div>
             </div>
             <div class="item">
-              <img src="../../assets/imgs/3_2.png" alt="">
+              <div id="echarts_line3_2" style="width: 100%; height: 100%"></div>
               <div class="imgName">不同IRS反射单元数下各算法用户上行平均功率值</div>
             </div>
           </div>
@@ -70,7 +70,7 @@
       return {
         loading: false,
         state: 0,
-        activeName: '2',
+        activeName: '1',
         alive: true,
         dataLine1_1: [],
         dataLine1_2: [],
@@ -103,6 +103,8 @@
           this.showecharts2_2();
           this.showecharts2_3();
         } else if(val==3) {
+          this.showecharts3_1();
+          this.showecharts3_2();
 
         }
       },
@@ -141,9 +143,22 @@
           MUDwithoutIRS: [0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000,0.00000000000000e+000]
         }
         this.showecharts2_3();
-
-
-
+        this.dataLine3_1 = {
+          userNum: [20,40,60,80,100,120,140,160,180],
+          ourProposed10dB: [2.20765160765161e+001,2.30793650793651e+001,2.42385022385022e+001,2.55278795278795e+001,2.67977207977208e+001,2.82954822954823e+001,2.99039479039479e+001,3.17012617012617e+001,3.33878713878714e+001],
+          powerCentered10dB: [2.19072039072039e+001,2.28905168905169e+001,2.40170940170940e+001,2.52153032153032e+001,2.64981684981685e+001,2.79894179894180e+001,2.95132275132275e+001,3.12128612128612e+001,3.27887667887668e+001],
+          ourProposed5dB: [1.91721611721612e+001,2.01684981684982e+001,2.14057794057794e+001,2.27537647537648e+001,2.39975579975580e+001,2.56581196581197e+001,2.72014652014652e+001,2.90508750508751e+001,3.10109890109890e+001],
+          powerCentered5dB: [1.90679690679691e+001,1.99340659340659e+001,2.11257631257631e+001,2.24281644281644e+001,2.36133496133496e+001,2.53194953194953e+001,2.68172568172568e+001,2.87187627187627e+001,3.00146520146520e+001]
+        }
+        this.showecharts3_1();
+        this.dataLine3_2 = {
+          IRSNum: [20,40,60,80,100,120,140,160,180],
+          ourProposed10dB: [2.20765160765161e+001,2.30793650793651e+001,2.42385022385022e+001,2.55278795278795e+001,2.67977207977208e+001,2.82954822954823e+001,2.99039479039479e+001,3.17012617012617e+001,3.33878713878714e+001],
+          powerCentered10dB: [2.19072039072039e+001,2.28905168905169e+001,2.40170940170940e+001,2.52153032153032e+001,2.64981684981685e+001,2.79894179894180e+001,2.95132275132275e+001,3.12128612128612e+001,3.27887667887668e+001],
+          ourProposed5dB: [1.91721611721612e+001,2.01684981684982e+001,2.14057794057794e+001,2.27537647537648e+001,2.39975579975580e+001,2.56581196581197e+001,2.72014652014652e+001,2.90508750508751e+001,3.10109890109890e+001],
+          powerCentered5dB: [1.90679690679691e+001,1.99340659340659e+001,2.11257631257631e+001,2.24281644281644e+001,2.36133496133496e+001,2.53194953194953e+001,2.68172568172568e+001,2.87187627187627e+001,3.00146520146520e+001]
+        }
+        this.showecharts3_2();
       },
       showecharts1_1(){
         let option_line1_1 = {
@@ -158,9 +173,9 @@
           },
           grid: {
             left: '12%',
-            top: '10%',
+            top: '20%',
             right: '10%',
-            bottom: '5%'
+            bottom: '20%'
           },
           tooltip: {
             trigger: 'axis'
@@ -193,9 +208,9 @@
           },
           grid: {
             left: '12%',
-            top: '10%',
+            top: '20%',
             right: '10%',
-            bottom: '5%'
+            bottom: '20%'
           },
           tooltip: {
             trigger: 'axis'
@@ -228,9 +243,9 @@
           },
           grid: {
             left: '12%',
-            top: '10%',
+            top: '20%',
             right: '10%',
-            bottom: '5%'
+            bottom: '20%'
           },
           tooltip: {
             trigger: 'axis'
@@ -330,9 +345,9 @@
           },
           grid: {
             left: '12%',
-            top: '10%',
+            top: '20%',
             right: '10%',
-            bottom: '5%'
+            bottom: '20%'
           },
           tooltip: {
             trigger: 'axis'
@@ -349,6 +364,88 @@
           if(document.getElementById('echarts_line2_3')!=null) {
             document.getElementById('echarts_line2_3').removeAttribute("_echarts_instance_");
             this.$echarts.init(document.getElementById('echarts_line2_3')).setOption(option_line2_3);
+          }
+        });
+      },
+      showecharts3_1(){
+        let option_line3_1 = {
+          xAxis: {
+            name: 'number of active users',
+            type: 'category',
+            data: this.dataLine3_1.userNum,
+            nameLocation:'middle',
+            nameGap: 30,
+          },
+          yAxis: {
+            name: 'Average transmit power of all the UEs(dBm)',
+            type: 'value',
+            nameLocation:'middle',
+            nameGap: 30,
+          },
+          grid: {
+            left: '12%',
+            top: '20%',
+            right: '10%',
+            bottom: '20%'
+          },
+          tooltip: {
+            trigger: 'axis'
+          },
+          legend: {
+            data: ['our proposed with sinr=10dB','power centered with sinr=10dB','our proposed with sinr=5dB','power centered with sinr=5dB']
+          },
+          series: [
+            {data:this.dataLine3_1.ourProposed10dB,type:'line',name:'our proposed with sinr=10dB'},
+            {data:this.dataLine3_1.powerCentered10dB,type:'line',name:'power centered with sinr=10dB'},
+            {data:this.dataLine3_1.ourProposed5dB,type:'line',name:'our proposed with sinr=5dB'},
+            {data:this.dataLine3_1.powerCentered10dB,type:'line',name:'power centered with sinr=10dB'},
+          ]
+        };
+        this.$nextTick(() => {
+          if(document.getElementById('echarts_line3_1')!=null) {
+            document.getElementById('echarts_line3_1').removeAttribute("_echarts_instance_");
+            this.$echarts.init(document.getElementById('echarts_line3_1')).setOption(option_line3_1);
+          }
+        });
+      },
+      showecharts3_2(){
+        let option_line3_2 = {
+          xAxis: {
+            name: 'number of IRS reflecting elements',
+            type: 'category',
+            data: this.dataLine3_2.IRSNum,
+            nameLocation:'middle',
+            nameGap: 30,
+          },
+          yAxis: {
+            name: 'Average transmit power of all the UEs(dBm)',
+            type: 'value',
+            nameLocation:'middle',
+            nameGap: 30,
+          },
+          grid: {
+            left: '12%',
+            top: '20%',
+            right: '10%',
+            bottom: '20%'
+          },
+          tooltip: {
+            trigger: 'axis'
+          },
+          legend: {
+            data: ['our proposed with sinr=10dB','power centered with sinr=10dB','our proposed with sinr=5dB','power centered with sinr=5dB']
+          },
+          series: [
+            {data:this.dataLine3_2.ourProposed10dB,type:'line',name:'our proposed with sinr=10dB'},
+            {data:this.dataLine3_2.powerCentered10dB,type:'line',name:'power centered with sinr=10dB'},
+            {data:this.dataLine3_2.ourProposed5dB,type:'line',name:'our proposed with sinr=5dB'},
+            {data:this.dataLine3_2.powerCentered10dB,type:'line',name:'power centered with sinr=10dB'},
+          ]
+        };
+        this.$nextTick(() => {
+          if(document.getElementById('echarts_line3_2')!=null) {
+            document.getElementById('echarts_line3_2').removeAttribute("_echarts_instance_");
+            this.$echarts.init(document.getElementById('echarts_line3_2')).setOption(option_line3_2);
           }
         });
       },
@@ -441,5 +538,5 @@
     align-items: center;
     flex-direction: row;
   }
-  #box3 .item img { height: 40vh;}
+  #box3 .item { height: 50vh;}
 </style>

@@ -49,8 +49,8 @@
                   </el-form-item>
                 </el-col>
               </el-row>
-              <el-form-item label='DelayProfile' v-show="form1.smallone==1&&form1.select2!=''&&form1.method==0">{{this.form1.select2}}</el-form-item>
-              <el-row :gutter="24" v-show="form1.smallone==1&&form1.select2!=''&&form1.method==0">
+              <el-form-item label='DelayProfile' v-show="form1.select2!=''&&form1.method==0">{{this.form1.select2}}</el-form-item>
+              <el-row :gutter="24" v-show="form1.select2!=''&&form1.method==0">
                 <el-col :span="12">
                   <el-form-item label="AngleScaling">
                     <el-input v-model="form1.AngleScaling"></el-input>
@@ -156,6 +156,18 @@
           fileList: [],
           select1: '',
           select2: '',
+          AngleScaling:'False',
+          DelaySpread:'3.000e-9',
+          CarrierFrequency:'2.635e+9',
+          MaximumDopplerShift:'5',
+          UTDirectionOfTravel:'0.0; 90.0',
+          SampleRate:'6.144e+7',
+          TransmitAntennaArray:'[1 1 1 1 1]',
+          ReceiveAntennaArray:'[1 1 1 1 1]',
+          Seed:'76',
+          ChannelFiltering:'True',
+          SampleDensity:'64',
+          InitialTime:'0',
         },
         dialogForm: {
           'RNTI': '1',

@@ -20,7 +20,7 @@
                   :data="form1.tableData"
                   border
                   style="width:100%;"
-                  max-height="300px">
+                  max-height="400px">
                   <el-table-column align="center" type="index" label="序号"></el-table-column>
                   <el-table-column align="center" label="RNTI" prop="RNTI"></el-table-column>
                   <el-table-column align="center" label="LogicalChannelID" prop="LogicalChannelID"></el-table-column>
@@ -72,7 +72,7 @@
                   :data="form2.tableData"
                   border
                   style="width:100%;"
-                  max-height="300px">
+                  max-height="400px">
                   <el-table-column align="center" type="index" label="序号"></el-table-column>
                   <el-table-column align="center" label="DataRate" prop="DataRate"></el-table-column>
                   <el-table-column align="center" label="PacketSize" prop="PacketSize"></el-table-column>
@@ -181,7 +181,7 @@
                   :data="form3.tableData"
                   border
                   style="width:100%;"
-                  max-height="160px">
+                  max-height="180px">
                   <el-table-column label="复用类型" align="center">
                     <template slot-scope="scope">
                       <el-radio :label="scope.row.name" v-model="form3.selectName" @change="form3.selectName=scope.row.name"></el-radio>
@@ -192,7 +192,19 @@
                   <el-table-column align="center" label="NumDLSyms" prop="NumDLSyms"></el-table-column>
                   <el-table-column align="center" label="NumULSyms" prop="NumULSyms"></el-table-column>
                   <el-table-column align="center" label="NumULSlots" prop="NumULSlots"></el-table-column>
-                  <el-table-column align="center" label="TTIGranularity" prop="TTIGranularity"></el-table-column>
+<!--                  <el-table-column align="center" label="TTIGranularity" prop="TTIGranularity"></el-table-column>-->
+                  <el-table-column label="TTIGranularity" align="center">
+                    <template slot-scope="scope">
+                      <el-select v-model="scope.row.TTIGranularity" placeholder="请选择" @change="formComplete=false">
+                        <el-option
+                            v-for="item in form3.TTIGranularityFiles"
+                            :key="item"
+                            :label="item"
+                            :value="item">
+                        </el-option>
+                      </el-select>
+                    </template>
+                  </el-table-column>
                   <el-table-column align="center" label="操作">
                     <template slot-scope="scope">
                       <el-button @click="showDialog(scope.row.name,3)" size="mini">编辑</el-button>
@@ -254,41 +266,28 @@
           method: '0',
           tableData: [
             {'RNTI':1,'LogicalChannelID':4,'LCGID':1,'SeqNumFieldLength':6,'MaxTxBufferSDUs':2,'ReassemblyTimer':5,'EntityType':2,'Priority':1,'PBR':8,'BSD':10},
-            {'RNTI':1,'LogicalChannelID':4,'LCGID':1,'SeqNumFieldLength':6,'MaxTxBufferSDUs':2,'ReassemblyTimer':5,'EntityType':2,'Priority':1,'PBR':8,'BSD':10},
-            {'RNTI':1,'LogicalChannelID':4,'LCGID':1,'SeqNumFieldLength':6,'MaxTxBufferSDUs':2,'ReassemblyTimer':5,'EntityType':2,'Priority':1,'PBR':8,'BSD':10},
-            {'RNTI':1,'LogicalChannelID':4,'LCGID':1,'SeqNumFieldLength':6,'MaxTxBufferSDUs':2,'ReassemblyTimer':5,'EntityType':2,'Priority':1,'PBR':8,'BSD':10},
-            {'RNTI':1,'LogicalChannelID':4,'LCGID':1,'SeqNumFieldLength':6,'MaxTxBufferSDUs':2,'ReassemblyTimer':5,'EntityType':2,'Priority':1,'PBR':8,'BSD':10},
-            {'RNTI':1,'LogicalChannelID':4,'LCGID':1,'SeqNumFieldLength':6,'MaxTxBufferSDUs':2,'ReassemblyTimer':5,'EntityType':2,'Priority':1,'PBR':8,'BSD':10},
-            {'RNTI':1,'LogicalChannelID':4,'LCGID':1,'SeqNumFieldLength':6,'MaxTxBufferSDUs':2,'ReassemblyTimer':5,'EntityType':2,'Priority':1,'PBR':8,'BSD':10},
+            {'RNTI':1,'LogicalChannelID':6,'LCGID':1,'SeqNumFieldLength':12,'MaxTxBufferSDUs':5,'ReassemblyTimer':10,'EntityType':2,'Priority':1,'PBR':16,'BSD':20},
+            {'RNTI':1,'LogicalChannelID':7,'LCGID':3,'SeqNumFieldLength':6,'MaxTxBufferSDUs':2,'ReassemblyTimer':5,'EntityType':0,'Priority':1,'PBR':8,'BSD':5},
           ],
           fileList: [],
-          input1: {
-            username: '',
-            password: '',
-            ipaddress: '',
-            port: ''
-          },
-          input2: {
-            username: '',
-            password: '',
-            ipaddress: '',
-            port: ''
-          },
+
         },
         form2: {
           method: '0',
           tableData: [
             {'DataRate':8000,'PacketSize':6400,'HostDevice':0,'RNTI':1,'LCID':4},
-            {'DataRate':8000,'PacketSize':6400,'HostDevice':0,'RNTI':1,'LCID':4},
-            {'DataRate':8000,'PacketSize':6400,'HostDevice':0,'RNTI':1,'LCID':4},
-            {'DataRate':8000,'PacketSize':6400,'HostDevice':0,'RNTI':1,'LCID':4},
-            {'DataRate':8000,'PacketSize':6400,'HostDevice':0,'RNTI':1,'LCID':4},
-            {'DataRate':8000,'PacketSize':6400,'HostDevice':0,'RNTI':1,'LCID':4},
+            {'DataRate':3000,'PacketSize':32,'HostDevice':0,'RNTI':1,'LCID':6},
+            {'DataRate':1500,'PacketSize':480,'HostDevice':0,'RNTI':1,'LCID':7},
+            {'DataRate':2000,'PacketSize':1300,'HostDevice':1,'RNTI':1,'LCID':15},
+            {'DataRate':6000,'PacketSize':450,'HostDevice':1,'RNTI':2,'LCID':5},
+            {'DataRate':15000,'PacketSize':700,'HostDevice':0,'RNTI':2,'LCID':10},
+            {'DataRate':8000,'PacketSize':8000,'HostDevice':0,'RNTI':3,'LCID':5},
+            {'DataRate':30000,'PacketSize':7500,'HostDevice':0,'RNTI':3,'LCID':8},
           ],
           fileList: [],
         },
         form3: {
-          type1: '0',
+          type1: '1',
           type2: '0',
           interval: '15',
           carrier: [2.515,2.635],
@@ -298,13 +297,14 @@
           fileList: [],
           maxRB: 160,
           CSISize: 16,
-          speed: 5,
+          speed: "5",
           selected: true,
           selectName: 'FDD',
           tableData: [
             {'name':'FDD','DLULPeriodicity':'-','NumDLSlots':'-','NumDLSyms':'-','NumULSyms':'-','NumULSlots':'-','TTIGranularity':'4'},
             {'name':'TDD','DLULPeriodicity':'5','NumDLSlots':'2','NumDLSyms':'8','NumULSyms':'4','NumULSlots':'2','TTIGranularity':'4'},
           ],
+          TTIGranularityFiles:['2','4','7'],
         },
         dialogForm: {
           'name':'FDD','DLULPeriodicity':'-','NumDLSlots':'-',
